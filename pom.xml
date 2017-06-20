@@ -16,10 +16,35 @@
 		<mule.tools.version>1.2</mule.tools.version>
 		<derby.version>10.12.1.1</derby.version>
 		<activemq.version>5.13.3</activemq.version>
+		<uid>graghavender21</uid>
+		<pwd>junk</pwd>
 	</properties>
 
 	<build>
 		<plugins>
+		<plugin>
+    <groupId>org.mule.tools.maven</groupId>
+    <artifactId>mule-maven-plugin</artifactId>
+    <version>2.0</version>
+    <configuration>
+        <deploymentType>cloudhub</deploymentType>
+        <muleVersion>3.7.3</muleVersion>
+        <username>${uid}</username>
+        <password>${pwd}</password>
+	 <workerType>Micro</workerType>
+        <redeploy>true</redeploy>
+        <environment>Production</environment>
+    </configuration>
+    <executions>
+        <execution>
+            <id>deploy</id>
+            <phase>deploy</phase>
+            <goals>
+                <goal>deploy</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
